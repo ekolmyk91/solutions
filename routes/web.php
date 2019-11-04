@@ -16,6 +16,10 @@
 //});
 
 Auth::routes(['register' => false]);
-Route::get('/dashboard', 'DashboardController@index')->name('home');
+//Route::get('/dashboard', 'DashboardController@index')->name('home');
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('members', 'Front\MemberController@index');
+});
 
 Route::view('/{path?}', 'app');
