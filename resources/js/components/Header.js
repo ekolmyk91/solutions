@@ -2,11 +2,28 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Header = () => (
-    <nav className='navbar navbar-expand-md navbar-light navbar-laravel'>
-        <div className='container'>
-            <Link className='navbar-brand' to='/'>Tasksman</Link>
+    <header>
+        <div class="wrapper">
+            <div class="divHeader">
+                <a title="Logo" href="index.html" class="header-logo">
+                    <svg>
+                        <use xlinkHref='#logo' />
+                    </svg>
+                </a>
+                <ul class="navMenu">
+                    <li>
+                        <Link to='/'>Главная</Link>
+                    </li>
+                    <li>
+                        <Link to='team'>Команда</Link>
+                    </li>
+                </ul>
+            </div>
+            <a class="hamburger js-navOpenMenu">
+                <span></span>
+            </a>
         </div>
-    </nav>
+    </header>
 )
 
 export default Header
