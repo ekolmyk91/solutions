@@ -67138,7 +67138,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73060,7 +73060,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "content"
+        className: "content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberSearch__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/team",
         component: _TeamList__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -73092,27 +73092,330 @@ __webpack_require__.r(__webpack_exports__);
 
 var Header = function Header() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "wrapper"
+    className: "wrapper"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "divHeader"
+    className: "divHeader"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     title: "Logo",
     href: "index.html",
-    "class": "header-logo"
+    className: "header-logo"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("use", {
     xlinkHref: "#logo"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    "class": "navMenu"
+    className: "navMenu"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/"
   }, "\u0413\u043B\u0430\u0432\u043D\u0430\u044F")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "team"
   }, "\u041A\u043E\u043C\u0430\u043D\u0434\u0430")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    "class": "hamburger js-navOpenMenu"
+    className: "hamburger js-navOpenMenu"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
+
+/***/ "./resources/js/components/MemberInfoPopup.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/MemberInfoPopup.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+
+
+var MemberInfoPopup =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(MemberInfoPopup, _Component);
+
+  function MemberInfoPopup() {
+    _classCallCheck(this, MemberInfoPopup);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MemberInfoPopup).apply(this, arguments));
+  }
+
+  _createClass(MemberInfoPopup, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "team-box__popup blockFlex"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/front/logo8.png",
+        alt: "develop image"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "info blockFlex"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dev-name"
+      }, "Develop Developer1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "date-birth info__text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "info__label"
+      }, "Date-birth: "), "16.10.2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "department info__text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "info__label"
+      }, "Department: "), "Wordpress"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "position info__text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "info__label"
+      }, "Position: "), "front-end"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "skills info__text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "info__label"
+      }, "Skills: "), "Html, Css, Js, jQuery, Vue Js"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "sertificate"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "sertificate__item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/front/sertificate.jpg",
+        alt: "sertificate image"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "sertificate__item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/front/sertificate.jpg",
+        alt: "sertificate image"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "sertificate__item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: " /images/front/sertificate.jpg",
+        alt: "sertificate image"
+      })))));
+    }
+  }]);
+
+  return MemberInfoPopup;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (MemberInfoPopup);
+
+/***/ }),
+
+/***/ "./resources/js/components/MemberPreview.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/MemberPreview.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+
+
+var MemberPreview =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(MemberPreview, _Component);
+
+  function MemberPreview() {
+    _classCallCheck(this, MemberPreview);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MemberPreview).apply(this, arguments));
+  }
+
+  _createClass(MemberPreview, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "team-box__item blockFlex"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/images/front/logo8.png",
+        alt: "develop image"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dev-name"
+      }, "Develop Developer1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "department info__text"
+      }, "Wordpress")));
+    }
+  }]);
+
+  return MemberPreview;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (MemberPreview);
 
 /***/ }),
 
@@ -73229,25 +73532,24 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        "class": "pageHeaderForm"
+        className: "pageHeaderForm"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "wrapper"
+        className: "wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041A\u043E\u043C\u0430\u043D\u0434\u0430"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        "class": "",
+        className: "",
         method: "get",
         action: "search.html"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        "class": "js-widthInput",
+        className: "js-widthInput",
         type: "text",
         value: "",
         placeholder: "\u041F\u043E\u0438\u0441\u043A \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A\u043E\u0432",
-        name: "s",
-        AUTOCOMPLETE: "off"
+        name: "s"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        "class": "",
+        className: "",
         type: "submit"
       }, "\u041F\u043E\u0438\u0441\u043A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "hiddenSearch js-widthBlock"
+        className: "hiddenSearch js-widthBlock"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, "vfv")))))));
@@ -73272,6 +73574,10 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _MemberPreview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MemberPreview */ "./resources/js/components/MemberPreview.js");
+/* harmony import */ var _MemberInfoPopup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MemberInfoPopup */ "./resources/js/components/MemberInfoPopup.js");
 function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
 
 function _typeof(obj) {
@@ -73359,77 +73665,72 @@ function _setPrototypeOf(o, p) {
 
 
 
+
+
+
 var TeamList =
 /*#__PURE__*/
 function (_Component) {
   _inherits(TeamList, _Component);
 
   function TeamList() {
+    var _this;
+
     _classCallCheck(this, TeamList);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(TeamList).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TeamList).call(this));
+    _this.state = {
+      members: [],
+      error: null,
+      isLoaded: false
+    };
+    return _this;
   }
 
   _createClass(TeamList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/members').then(function (response) {
+        // const members= response.data;
+        _this2.setState({
+          members: response.data,
+          isLoaded: true
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        "class": "team-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "wrapper blockFlex"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "mainContent"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "team-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "wrapper blockFlex"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "mainContent"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "team-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "team-box__card "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "team-box__item blockFlex"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "img"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "dev-name"
-      }, "Develop Developer1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "department info__text"
-      }, "Wordpress"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "team-box__popup blockFlex"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "info blockFlex"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "dev-name"
-      }, "Develop Developer1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "date-birth info__text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "info__label"
-      }, "Date-birth: "), "16.10.2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "department info__text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "info__label"
-      }, "Department: "), "Wordpress"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "position info__text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "info__label"
-      }, "Position: "), "front-end"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "skills info__text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "info__label"
-      }, "Skills: "), "Html, Css, Js, jQuery, Vue Js"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        "class": "sertificate"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "sertificate__item"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "sertificate__item"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        "class": "sertificate__item"
-      }))))))))))));
+      var _this$state = this.state,
+          isLoaded = _this$state.isLoaded,
+          members = _this$state.members;
+
+      if (!isLoaded) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "team-page"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wrapper blockFlex"
+        }, members.map(function (member) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "wrapper blockFlex",
+            key: member.id
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "mainContent"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "team-box"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "wrapper blockFlex"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "team-box"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "team-box__card "
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberPreview__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberInfoPopup__WEBPACK_IMPORTED_MODULE_3__["default"], null)))))));
+        })));
+      }
     }
   }]);
 

@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 
 const Header = () => (
     <header>
-        <div class="wrapper">
-            <div class="divHeader">
-                <a title="Logo" href="index.html" class="header-logo">
+        <div className="wrapper">
+            <div className="divHeader">
+                <a title="Logo" href="index.html" className="header-logo">
                     <svg>
                         <use xlinkHref='#logo' />
                     </svg>
                 </a>
-                <ul class="navMenu">
+                <ul className="navMenu">
                     <li>
                         <Link to='/'>Главная</Link>
                     </li>
@@ -19,7 +19,7 @@ const Header = () => (
                     </li>
                 </ul>
             </div>
-            <a class="hamburger js-navOpenMenu">
+            <a className="hamburger js-navOpenMenu">
                 <span></span>
             </a>
         </div>

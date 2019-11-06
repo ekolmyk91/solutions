@@ -10,7 +10,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <Header />
-                <div class="content">
+                <div className="content">
                     <MemberSearch />
                     <Switch>
                         <Route path='/team' component={TeamList} />
