@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -67138,7 +67138,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73228,9 +73228,14 @@ function (_Component) {
   _createClass(MemberInfoPopup, [{
     key: "render",
     value: function render() {
+      var member = this.props.member;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "team-box__popup blockFlex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "close-icon"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "close")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/images/front/logo8.png",
@@ -73239,19 +73244,21 @@ function (_Component) {
         className: "info blockFlex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dev-name"
-      }, "Develop Developer1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, member.name, " ", member.surname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "date-birth info__text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "info__label"
-      }, "Date-birth: "), "16.10.2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Date-birth: "), new Date(member.birthday).toDateString(null, {
+        dateStyle: 'short'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "department info__text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "info__label"
-      }, "Department: "), "Wordpress"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Department: "), member.department), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "position info__text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "info__label"
-      }, "Position: "), "front-end"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Position: "), member.position), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "skills info__text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "info__label"
@@ -73395,6 +73402,7 @@ function (_Component) {
   _createClass(MemberPreview, [{
     key: "render",
     value: function render() {
+      var member = this.props.member;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "team-box__item blockFlex"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -73406,9 +73414,9 @@ function (_Component) {
         className: "info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dev-name"
-      }, "Develop Developer1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, member.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "department info__text"
-      }, "Wordpress")));
+      }, member.surname)));
     }
   }]);
 
@@ -73673,16 +73681,17 @@ var TeamList =
 function (_Component) {
   _inherits(TeamList, _Component);
 
-  function TeamList() {
+  function TeamList(props) {
     var _this;
 
     _classCallCheck(this, TeamList);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(TeamList).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TeamList).call(this, props));
     _this.state = {
       members: [],
       error: null,
-      isLoaded: false
+      isLoaded: false,
+      showPopupId: false
     };
     return _this;
   }
@@ -73701,8 +73710,18 @@ function (_Component) {
       });
     }
   }, {
+    key: "togglePopup",
+    value: function togglePopup(id, e) {
+      console.log(e.target.tagName);
+      this.setState({
+        showPopupId: id ? id : null
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$state = this.state,
           isLoaded = _this$state.isLoaded,
           members = _this$state.members;
@@ -73717,7 +73736,8 @@ function (_Component) {
         }, members.map(function (member) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "wrapper blockFlex",
-            key: member.id
+            key: member.id,
+            onClick: _this3.togglePopup.bind(_this3, member.id)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "mainContent"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -73727,8 +73747,13 @@ function (_Component) {
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "team-box"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "team-box__card "
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberPreview__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberInfoPopup__WEBPACK_IMPORTED_MODULE_3__["default"], null)))))));
+            className: _this3.state.showPopupId == member.id ? 'team-box__card team-box__card--active' : 'team-box__card'
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberPreview__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            member: member
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberInfoPopup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            member: member,
+            closePopup: _this3.togglePopup.bind(_this3, null)
+          })))))));
         })));
       }
     }
@@ -73741,7 +73766,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!***********************************!*\
   !*** multi ./resources/js/app.js ***!
   \***********************************/

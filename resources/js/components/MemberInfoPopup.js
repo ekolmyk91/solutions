@@ -2,29 +2,31 @@ import React, {Component} from 'react'
 
 class MemberInfoPopup extends Component {
     render () {
+        const member = this.props.member
         return (
             <div className="team-box__popup blockFlex">
-                {/*<div className="close-icon">*/}
+                <div className="close-icon">
+                    <a href='#'>close</a>
                 {/*<svg><use xlink:href="#close-icon"></use></svg>*/}
-                {/*</div>*/}
+                </div>
                 <div className="img">
                     <img src="/images/front/logo8.png" alt="develop image" />
                 </div>
                 <div className="info blockFlex">
                     <div className="dev-name">
-                        Develop Developer1
+                        {member.name} {member.surname}
                     </div>
                     <div className="date-birth info__text">
                         <span className="info__label">Date-birth: </span>
-                        16.10.2019
+                        {(new Date(member.birthday).toDateString(null, {dateStyle: 'short'}))}
                     </div>
                     <div className="department info__text">
                         <span className="info__label">Department: </span>
-                        Wordpress
+                        {member.department}
                     </div>
                     <div className="position info__text">
                         <span className="info__label">Position: </span>
-                        front-end
+                        {member.position}
                     </div>
                     <div className="skills info__text">
                         <span className="info__label">Skills: </span>

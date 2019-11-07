@@ -2,14 +2,15 @@ import React, {Component} from 'react'
 
 class MemberPreview extends Component {
     render () {
+        const member = this.props.member
         return (
             <div className="team-box__item blockFlex">
                 <div className="img">
                     <img src="/images/front/logo8.png" alt="develop image" />
                 </div>
                 <div className="info">
-                    <div className="dev-name">Develop Developer1</div>
-                    <div className="department info__text">Wordpress</div>
+                    <div className="dev-name">{member.name}</div>
+                    <div className="department info__text">{member.surname}</div>
                 </div>
             </div>
         )
