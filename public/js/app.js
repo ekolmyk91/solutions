@@ -67138,7 +67138,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73234,7 +73234,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "close-icon"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
+        href: "#",
+        onClick: this.props.closePopup
       }, "close")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -73712,10 +73713,10 @@ function (_Component) {
   }, {
     key: "togglePopup",
     value: function togglePopup(id, e) {
-      console.log(e.target.tagName);
       this.setState({
         showPopupId: id ? id : null
       });
+      console.log(this.state.showPopupId);
     }
   }, {
     key: "render",
@@ -73730,31 +73731,25 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          className: "team-page"
+          "class": "team-page"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "wrapper blockFlex"
+          "class": "wrapper blockFlex"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          "class": "mainContent"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          "class": "team-box"
         }, members.map(function (member) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "wrapper blockFlex",
+            className: "team-box__card",
             key: member.id,
             onClick: _this3.togglePopup.bind(_this3, member.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "mainContent"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "team-box"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "wrapper blockFlex"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "team-box"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: _this3.state.showPopupId == member.id ? 'team-box__card team-box__card--active' : 'team-box__card'
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberPreview__WEBPACK_IMPORTED_MODULE_2__["default"], {
             member: member
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberInfoPopup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          }), _this3.state.showPopupId == member.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberInfoPopup__WEBPACK_IMPORTED_MODULE_3__["default"], {
             member: member,
             closePopup: _this3.togglePopup.bind(_this3, null)
-          })))))));
-        })));
+          }) : null);
+        })))));
       }
     }
   }]);

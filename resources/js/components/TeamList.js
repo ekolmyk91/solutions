@@ -26,10 +26,11 @@ class TeamList extends Component {
     }
 
     togglePopup(id, e) {
-        console.log(e.target.tagName)
         this.setState({
             showPopupId: id ? id : null
         });
+
+        console.log(this.state.showPopupId)
     }
 
     render () {
@@ -39,31 +40,24 @@ class TeamList extends Component {
         }else{
 
             return (
-                <section className="team-page">
-                    <div className="wrapper blockFlex">
-                        { members.map((member) => {
-                            return (
-                                <div className="wrapper blockFlex" key={member.id} onClick={this.togglePopup.bind(this, member.id)}>
-                                    <div className="mainContent">
-                                        <div className="team-box">
-                                            <div className="wrapper blockFlex">
-                                                <div className="team-box">
-                                                    <div className='team-box__card'>
-                                                        <MemberPreview member={member} />
-                                                        {this.state.showPopupId ==  member.id ?
-                                                            <MemberInfoPopup member={member} closePopup={this.togglePopup.bind(this, null)} :
-                                                            null
-                                                          />
-                                                        }
+                <section class="team-page">
+                    <div class="wrapper blockFlex">
+                        <div class="mainContent">
+                            <div class="team-box">
+                                { members.map((member) => {
+                                    return (
+                                        <div className='team-box__card' key={member.id} onClick={this.togglePopup.bind(this, member.id)}>
+                                            <MemberPreview member={member} />
+                                            {this.state.showPopupId ==  member.id ?
+                                                <MemberInfoPopup member={member} closePopup={this.togglePopup.bind(this, null)} /> :
+                                                null
+                                            }
 
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                                    )
+                                })}
+                            </div>
+                        </div>
                     </div>
                 </section>
             )
