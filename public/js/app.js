@@ -73405,7 +73405,8 @@ function (_Component) {
     value: function render() {
       var member = this.props.member;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "team-box__item blockFlex"
+        className: "team-box__item blockFlex",
+        onClick: this.props.showPopup
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -73716,7 +73717,6 @@ function (_Component) {
       this.setState({
         showPopupId: id ? id : null
       });
-      console.log(this.state.showPopupId);
     }
   }, {
     key: "render",
@@ -73731,20 +73731,20 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          "class": "team-page"
+          className: "team-page"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "wrapper blockFlex"
+          className: "wrapper blockFlex"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "mainContent"
+          className: "mainContent"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "team-box"
+          className: "team-box"
         }, members.map(function (member) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "team-box__card",
-            key: member.id,
-            onClick: _this3.togglePopup.bind(_this3, member.id)
+            key: member.id
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberPreview__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            member: member
+            member: member,
+            showPopup: _this3.togglePopup.bind(_this3, member.id)
           }), _this3.state.showPopupId == member.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MemberInfoPopup__WEBPACK_IMPORTED_MODULE_3__["default"], {
             member: member,
             closePopup: _this3.togglePopup.bind(_this3, null)

@@ -66,6 +66,33 @@ class AdminUsersController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @param IndexAdminUser $request
+     * @return Response|array
+     */
+    public function indexUser(IndexAdminUser $request)
+    {
+        // create and AdminListing instance for a specific model and
+        $data = AdminListing::create(AdminUser::class)->processRequestAndGet(
+        // pass the request with params
+          $request,
+
+          // set columns to query
+          ['id', 'first_name', 'last_name', 'email', 'activated', 'forbidden', 'language'],
+
+          // set columns to searchIn
+          ['id', 'first_name', 'last_name', 'email', 'language']
+        );
+
+        if ($request->ajax()) {
+            return ['data' => $data, 'activation' => Config::get('admin-auth.activation_enabled')];
+        }
+
+        return view('admin.admin-user.index', ['data' => $data, 'activation' => Config::get('admin-auth.activation_enabled')]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @throws AuthorizationException

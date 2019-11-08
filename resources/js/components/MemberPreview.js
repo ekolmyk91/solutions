@@ -4,7 +4,7 @@ class MemberPreview extends Component {
     render () {
         const member = this.props.member
         return (
-            <div className="team-box__item blockFlex">
+            <div className="team-box__item blockFlex" onClick={this.props.showPopup}>
                 <div className="img">
                     <img src="/images/front/logo8.png" alt="develop image" />
                 </div>

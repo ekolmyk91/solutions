@@ -29,8 +29,6 @@ class TeamList extends Component {
         this.setState({
             showPopupId: id ? id : null
         });
-
-        console.log(this.state.showPopupId)
     }
 
     render () {
@@ -40,19 +38,18 @@ class TeamList extends Component {
         }else{
 
             return (
-                <section class="team-page">
-                    <div class="wrapper blockFlex">
-                        <div class="mainContent">
-                            <div class="team-box">
+                <section className="team-page">
+                    <div className="wrapper blockFlex">
+                        <div className="mainContent">
+                            <div className="team-box">
                                 { members.map((member) => {
                                     return (
-                                        <div className='team-box__card' key={member.id} onClick={this.togglePopup.bind(this, member.id)}>
-                                            <MemberPreview member={member} />
+                                        <div className='team-box__card' key={member.id}>
+                                            <MemberPreview member={member} showPopup={this.togglePopup.bind(this, member.id)}/>
                                             {this.state.showPopupId ==  member.id ?
                                                 <MemberInfoPopup member={member} closePopup={this.togglePopup.bind(this, null)} /> :
                                                 null
                                             }
-
                                         </div>
                                     )
                                 })}

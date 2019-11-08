@@ -16,6 +16,12 @@ class FillDefaultAdminUserAndPermissions extends Migration
      * @var Repository|mixed
      */
     protected $guardName;
+
+    /**
+     * @var Repository|mixed
+     */
+    protected $userGuardName;
+
     /**
      * @var mixed
      */
@@ -49,6 +55,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
     public function __construct()
     {
         $this->guardName = config('admin-auth.defaults.guard');
+        $this->userGuardName = config('admin-auth.defaults.user_guard');
         $providerName = config('auth.guards.' . $this->guardName . '.provider');
         $provider = config('auth.providers.' . $providerName);
         if ($provider['driver'] === 'eloquent') {
@@ -75,6 +82,14 @@ class FillDefaultAdminUserAndPermissions extends Migration
             'admin.upload',
         ]);
 
+        $defaultMemberPermissions = collect([
+            // view admin as a whole
+          'admin',
+
+            // ability to upload
+          'admin.upload',
+        ]);
+
         //Add new permissions
         $this->permissions = $defaultPermissions->map(function ($permission) {
             return [
@@ -94,6 +109,13 @@ class FillDefaultAdminUserAndPermissions extends Migration
                 'updated_at' => Carbon::now(),
                 'permissions' => $defaultPermissions,
             ],
+            [
+                'name' => 'Member',
+                'guard_name' => $this->userGuardName,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'permissions' => $defaultMemberPermissions,
+            ],
         ];
 
         //Add new users
@@ -108,6 +130,10 @@ class FillDefaultAdminUserAndPermissions extends Migration
                 'updated_at' => Carbon::now(),
                 'activated' => true,
                 'roles' => [
+                    [
+                        'name' => 'Administrator',
+                        'guard_name' => $this->guardName,
+                    ],
                     [
                         'name' => 'Administrator',
                         'guard_name' => $this->guardName,
